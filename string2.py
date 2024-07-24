@@ -8,8 +8,13 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 
-def verbing(s):
-    # +++your code here+++
+def verbing(word):
+    if len(word) < 3:
+        return word
+    elif word.endswith('ing'):
+        return word + 'ly'
+    else:
+        return word + 'ing'
     return
 
 
@@ -23,7 +28,13 @@ def verbing(s):
 # This dinner is good!
 
 def not_bad(s):
-    # +++your code here+++
+    indexNot = s.find('not')
+    indexBad = s.find('bad')
+    
+    if indexNot != -1 and indexBad != -1 and indexBad > indexNot:
+        return s[:indexNot] + 'good' + s[indexBad + 3:]
+    else:
+        return s
     return
 
 
@@ -36,7 +47,14 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 
 def front_back(a, b):
-    # +++your code here+++
+    def getFrontBack(s):
+        mid = (len(s) + 1) //2
+        return s[:mid], s[mid:]
+    
+    a_front, a_back = getFrontBack(a)
+    b_front, b_back = getFrontBack(b)
+
+    return a_front + b_front + a_back + b_back
     return
 
 
